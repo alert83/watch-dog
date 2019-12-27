@@ -11,7 +11,10 @@ async function main() {
   //create a server object:
   http.createServer(function (req, res) {
     const auth = req.headers['x-authorization'];
-    if (auth === process.env.AUTH) reset();
+    if (auth === process.env.AUTH) {
+      console.log('reset');
+      reset();
+    }
     res.end(); //end the response
   }).listen(process.env.PORT);
 }
@@ -22,6 +25,8 @@ function reset() {
 }
 
 async function onTimeOut() {
+  console.log('timeout');
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT || 465,
