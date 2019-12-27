@@ -22,7 +22,7 @@ function reset() {
 }
 
 async function onTimeOut() {
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT || 465,
     secure: true, // true for 465, false for other ports
@@ -33,14 +33,17 @@ async function onTimeOut() {
     }
   });
 
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
+  const info = await transporter.sendMail({
     from: process.env.SENDER,
     to: process.env.RECIPIENT,
     subject: process.env.SUBJECT,
     text: "-'",
     html: "<b>watch dog raised</b>",
   });
+
+  transporter.close();
+
+  return info;
 }
 
 module.exports = {onTimeOut};
