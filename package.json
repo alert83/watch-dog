@@ -1,0 +1,24 @@
+{
+  "name": "my-watch-dog",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index",
+  "engines": {
+    "node": "10",
+    "npm": "6"
+  },
+  "scripts": {
+    "test": "mocha test/test.js",
+    "start": "node ."
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "nodemailer": "^6.4.2"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^10.17.13",
+    "@types/nodemailer": "^6.4.0",
+    "mocha": "^6.2.2"
+  }
+}
