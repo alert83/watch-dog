@@ -1,14 +1,12 @@
 "use strict";
 const http = require('http');
 const nodemailer = require("nodemailer");
-
 require('dotenv').config();
 
 let timeoutId;
 
 async function main() {
 
-  //create a server object:
   http.createServer(function (req, res) {
     const auth = req.headers['x-authorization'];
     if (auth === process.env.AUTH) {
@@ -24,7 +22,10 @@ function reset() {
   console.log('reset');
 
   timeoutId && clearTimeout(timeoutId);
-  timeoutId = setTimeout(async () => await onTimeOut(), Number(process.env.TIMEOUT_SEC) * 1000);
+  timeoutId = setTimeout(async () => {
+    await onTimeOut();
+    reset();
+  }, Number(process.env.TIMEOUT_SEC) * 1000);
 }
 
 async function onTimeOut() {
