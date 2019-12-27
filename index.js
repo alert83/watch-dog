@@ -12,7 +12,6 @@ async function main() {
   http.createServer(function (req, res) {
     const auth = req.headers['x-authorization'];
     if (auth === process.env.AUTH) {
-      console.log('reset');
       reset();
     }
     res.end(); //end the response
@@ -22,6 +21,8 @@ async function main() {
 }
 
 function reset() {
+  console.log('reset');
+
   timeoutId && clearTimeout(timeoutId);
   timeoutId = setTimeout(async () => await onTimeOut(), Number(process.env.TIMEOUT_SEC) * 1000);
 }
