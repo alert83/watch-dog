@@ -13,7 +13,7 @@ async function main() {
     const auth = req.headers['x-authorization'];
     if (auth === process.env.AUTH) reset();
     res.end(); //end the response
-  }).listen();
+  }).listen(process.env.PORT);
 }
 
 function reset() {
