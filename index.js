@@ -17,6 +17,8 @@ async function main() {
     }
     res.end(); //end the response
   }).listen(process.env.PORT);
+
+  reset();
 }
 
 function reset() {
