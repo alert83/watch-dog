@@ -1,11 +1,10 @@
 require('mocha');
 const onTimeOut = require("../index").onTimeOut;
 
-describe('Common API testing...', () => {
-  before(async () => {});
-  after(async () => {});
-
-  it('test', async () => {
-    await onTimeOut()
+describe('Testing...', () => {
+  it('test', (done) => {
+    onTimeOut()
+      .then(() => done())
+      .catch((err) => done(err))
   });
 });
