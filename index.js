@@ -1,8 +1,7 @@
-"use strict";
 const http = require('http');
 const nodemailer = require("nodemailer");
-require('dotenv').config();
 const request = require('request-promise');
+require('dotenv').config();
 
 let timeoutId;
 
@@ -21,12 +20,7 @@ async function main() {
 }
 
 function xAuthIsValid(req, res) {
-  if (req.header('x-authorization') === process.env.AUTH) {
-    return true;
-  }
-
-  res.status(401).send('Unauthorized');
-  return false;
+  return req.headers['x-authorization'] === process.env.AUTH;
 }
 
 function reset() {
