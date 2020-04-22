@@ -85,7 +85,13 @@ async function sendState(value) {
       }]
     },
     json: true
-  });
+  })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
 module.exports = {onTimeOut};
