@@ -4,8 +4,7 @@
   "private": true,
   "main": "index",
   "engines": {
-    "node": "10",
-    "npm": "6"
+    "node": "10"
   },
   "scripts": {
     "test": "mocha test/test.js",
@@ -13,7 +12,9 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "nodemailer": "^6.4.2"
+    "nodemailer": "^6.4.2",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
