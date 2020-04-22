@@ -41,6 +41,8 @@ function reset() {
 async function onTimeOut() {
   console.log('timeout');
 
+  await sendState('detected');
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT || 465,
@@ -59,8 +61,6 @@ async function onTimeOut() {
     text: "-'",
     html: "<b>watch dog raised</b>",
   });
-
-  await sendState('detected');
 
   transporter.close();
 
